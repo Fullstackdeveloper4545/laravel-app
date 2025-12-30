@@ -10,6 +10,7 @@ env:
   SSH_HOST: 72.61.174.202
   APP_DIR: /var/www/laravel-app
   TARGET_BRANCH: main
+  SSH_PASSWORD: ${{ secrets.VPS_SSH_PASSWORD }}
 
 jobs:
   deploy:
@@ -18,15 +19,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Start SSH agent
-        uses: webfactory/ssh-agent@v0.9.0
-        with:
-          ssh-private-key: ${{ secrets.VPS_SSH_KEY }}
-
       - name: Add VPS to known_hosts
         run: |
           mkdir -p ~/.ssh
           ssh-keyscan -H $SSH_HOST >> ~/.ssh/known_hosts
+
+      - name: Install sshpass
+        run: sudo apt-get update && sudo apt-get install -y sshpass
 
       - name: Deploy over SSH
         env:
@@ -34,8 +33,9 @@ jobs:
           SSH_HOST: ${{ env.SSH_HOST }}
           APP_DIR: ${{ env.APP_DIR }}
           TARGET_BRANCH: ${{ env.TARGET_BRANCH }}
+          SSHPASS: ${{ env.SSH_PASSWORD }}
         run: |
-          ssh ${SSH_USER}@${SSH_HOST} <<EOF
+          sshpass -e ssh -o StrictHostKeyChecking=yes ${SSH_USER}@${SSH_HOST} <<EOF
           set -euo pipefail
           cd ${APP_DIR}
           if [ ! -d .git ]; then
