@@ -53,6 +53,10 @@ jobs:
             echo "Repository not found at ${APP_DIR}"
             exit 1
           fi
+          if ! command -v composer >/dev/null 2>&1 || ! command -v npm >/dev/null 2>&1; then
+            apt-get update
+            apt-get install -y composer nodejs npm
+          fi
           git fetch origin ${TARGET_BRANCH}
           git reset --hard origin/${TARGET_BRANCH}
           composer install --no-interaction --prefer-dist --no-dev --optimize-autoloader
