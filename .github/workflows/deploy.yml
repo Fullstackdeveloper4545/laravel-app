@@ -35,7 +35,17 @@ jobs:
           TARGET_BRANCH: ${{ env.TARGET_BRANCH }}
           SSHPASS: ${{ env.SSH_PASSWORD }}
         run: |
-          sshpass -e ssh -o StrictHostKeyChecking=yes ${SSH_USER}@${SSH_HOST} <<EOF
+          if [ -z "$SSHPASS" ]; then
+            echo "Missing SSHPASS / VPS_SSH_PASSWORD secret"
+            exit 1
+          fi
+          sshpass -e ssh -T \
+            -o StrictHostKeyChecking=yes \
+            -o UserKnownHostsFile=~/.ssh/known_hosts \
+            -o PreferredAuthentications=password \
+            -o PubkeyAuthentication=no \
+            -o KbdInteractiveAuthentication=no \
+            ${SSH_USER}@${SSH_HOST} <<EOF
           set -euo pipefail
           cd ${APP_DIR}
           if [ ! -d .git ]; then
