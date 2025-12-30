@@ -906,6 +906,7 @@
     font-size: 22px;
     font-weight: 600;
     color: #f1f3f8;
+    margin-left: 8.5px;
 }
 
 .crm-card__list {
@@ -920,6 +921,7 @@
 
 .crm-card__list li {
     color: #d2d5dd;
+    padding-left: 4px;
 }
 
 @layer components {

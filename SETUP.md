@@ -85,3 +85,13 @@ This will install PHP deps, create `.env` if missing, generate the app key, run 
 ## Verification
 - Visit `http://127.0.0.1:8000` and ensure pages load.
 - Check database tables exist: `php artisan migrate:status`.
+
+## Deployment (GitHub Actions to Hostinger VPS)
+- Workflow: `.github/workflows/deploy.yml` deploys pushes to `main` to `deploy@72.61.174.202` in `/var/www/laravel-app` via SSH.
+- Before first run:
+  - Create the deploy user on the VPS and add its public key to `~deploy/.ssh/authorized_keys`.
+  - Place your production `.env` in `/var/www/laravel-app` (the workflow never copies secrets).
+  - Ensure PHP 8.2, Composer, Node.js 20, npm, Git, and your web server/PHP-FPM are installed; clone the repo to `/var/www/laravel-app` and check out the target branch.
+  - Add GitHub secret `VPS_SSH_KEY` containing the private key that matches the VPS authorized key.
+  - Adjust `SSH_USER`, `APP_DIR`, or `TARGET_BRANCH` in the workflow if your setup differs.
+- On push to `main`, the workflow fetches the latest code, installs PHP deps without dev packages, runs migrations, caches config/routes/views, builds front-end assets with `npm ci && npm run build`, and reloads php-fpm/nginx.
