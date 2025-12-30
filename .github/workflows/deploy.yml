@@ -57,7 +57,11 @@ jobs:
           apt-get update
           apt-get install -y ca-certificates curl git unzip zip software-properties-common
           apt-get install -y php-cli php-fpm php-mbstring php-xml php-mysql php-zip php-curl php-bcmath
-          apt-get install -y nodejs npm
+          # Node.js/npm: if npm is missing, install Node.js 20 from NodeSource (includes npm)
+          if ! command -v npm >/dev/null 2>&1; then
+            curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
+            apt-get install -y nodejs
+          fi
           if ! command -v composer >/dev/null 2>&1; then
             EXPECTED_SIGNATURE=$(curl -s https://composer.github.io/installer.sig)
             php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
