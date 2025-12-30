@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  SSH_USER: deploy
+  SSH_USER: root
   SSH_HOST: 72.61.174.202
   APP_DIR: /var/www/laravel-app
   TARGET_BRANCH: main
@@ -42,9 +42,10 @@ jobs:
           sshpass -e ssh -T \
             -o StrictHostKeyChecking=yes \
             -o UserKnownHostsFile=~/.ssh/known_hosts \
-            -o PreferredAuthentications=password \
             -o PubkeyAuthentication=no \
-            -o KbdInteractiveAuthentication=no \
+            -o PasswordAuthentication=yes \
+            -o KbdInteractiveAuthentication=yes \
+            -o PreferredAuthentications=password,keyboard-interactive \
             ${SSH_USER}@${SSH_HOST} <<EOF
           set -euo pipefail
           cd ${APP_DIR}
