@@ -9,145 +9,405 @@ document.addEventListener('DOMContentLoaded', () => {
             item.classList.toggle('is-open');
         });
     });
+});
+window.addEventListener("load", () => {
 
-    // Canvas-based hero grid (pure JS/CSS, no images).
-    const gridHost = document.querySelector('.hero-grid-anim');
-    if (gridHost && !gridHost.dataset.jsGridAttached) {
-        gridHost.dataset.jsGridAttached = 'true';
-        gridHost.style.position = 'absolute';
-        gridHost.style.inset = '0';
-        gridHost.style.pointerEvents = 'none';
-        gridHost.style.zIndex = '0';
+  // ================================
+  // CONTAINER
+  // ================================
+  const container = document.getElementById("three-container");
+  const WIDTH = container.clientWidth;
+  const HEIGHT = container.clientHeight;
 
-        gridHost.innerHTML = '';
+  // ================================
+  // SCENE
+  // ================================
+  const scene = new THREE.Scene();
 
-        // Glow under the grid
-        const glow = document.createElement('div');
-        glow.style.position = 'absolute';
-        glow.style.left = '50%';
-        glow.style.bottom = '-10%';
-        glow.style.width = '180%';
-        glow.style.height = '70%';
-        glow.style.transform = 'translateX(-50%)';
-        glow.style.background =
-            'radial-gradient(ellipse at center, rgba(115,70,255,0.55) 0%, rgba(115,70,255,0.08) 35%, rgba(115,70,255,0) 65%)';
-        glow.style.filter = 'blur(22px)';
-        glow.style.opacity = '0.9';
-        gridHost.appendChild(glow);
+  // ================================
+  // CAMERA
+  // ================================
+  const camera = new THREE.PerspectiveCamera(
+    55,
+    WIDTH / HEIGHT,
+    0.1,
+    200
+  );
+  camera.position.set(0, 11, 28);
+  camera.lookAt(0, -7, -40);
 
-        // Canvas for the grid
-        const canvas = document.createElement('canvas');
-        canvas.style.position = 'absolute';
-        canvas.style.inset = '0';
-        canvas.style.width = '100%';
-        canvas.style.height = '100%';
-        canvas.style.mixBlendMode = 'screen';
-        gridHost.appendChild(canvas);
+  // ================================
+  // RENDERER
+  // ================================
+  const renderer = new THREE.WebGLRenderer({ antialias: true });
+  renderer.setSize(WIDTH, HEIGHT);
+  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.setClearColor(0x050506);
+  container.appendChild(renderer.domElement);
 
-        const ctx = canvas.getContext('2d');
-        let width = 0;
-        let height = 0;
-        const vanish = { x: 0, y: 0 };
-        let animationFrame;
+  // ================================
+  // GRID CONFIG
+  // ================================
+  const GRID_SIZE = 62;
+  const DIVISIONS = 14;
+  const STEP = GRID_SIZE / DIVISIONS;
 
-        const resize = () => {
-            width = gridHost.offsetWidth;
-            height = gridHost.offsetHeight;
-            const dpr = window.devicePixelRatio || 1;
-            canvas.width = width * dpr;
-            canvas.height = height * dpr;
-            canvas.style.width = `${width}px`;
-            canvas.style.height = `${height}px`;
-            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-            vanish.x = width / 2;
-            vanish.y = height * 0.32;
-        };
+  const FRONT_WIDTH = 4;
+  const BACK_WIDTH = 0.6;
 
-        const drawGrid = (t) => {
-            ctx.clearRect(0, 0, width, height);
+  const FRONT_CURVE_STRENGTH = -200;
+  const FRONT_CURVE_DEPTH = 18;
 
-            const bottomY = height * 0.98;
-            const leftEdge = { x: width * -0.2, y: bottomY };
-            const rightEdge = { x: width * 1.2, y: bottomY };
+  const BASE_GREY = new THREE.Color(0x8a8a8a);
+  const PURPLE_GLOW = new THREE.Color(0xb26cff);
 
-            // base fading overlay to soften towards the horizon
-            const fade = ctx.createLinearGradient(0, vanish.y, 0, bottomY);
-            fade.addColorStop(0, 'rgba(0,0,0,0)');
-            fade.addColorStop(1, 'rgba(0,0,0,0.35)');
-            ctx.fillStyle = fade;
-            ctx.fillRect(0, 0, width, bottomY);
+  const ceilingLines = [];
+  const STAR_LENGTH = 4.5;
+  const STAR_START_Z = 18;
+  const STAR_END_Z = -40;
+  const STAR_FADE_START_Z = -5;
+  const STAR_FADE_RANGE = Math.abs(STAR_FADE_START_Z - STAR_END_Z);
 
-            ctx.lineWidth = 1.1;
-            ctx.strokeStyle = 'rgba(210,196,255,0.7)';
-            ctx.shadowColor = 'rgba(124,80,255,0.45)';
-            ctx.shadowBlur = 8;
+  function getCurveY(z) {
+    const t = THREE.MathUtils.clamp(1 - Math.abs(z) / FRONT_CURVE_DEPTH, 0, 1);
+    return -Math.pow(t, 3.6) * FRONT_CURVE_STRENGTH;
+  }
 
-            // Vertical lines
-            const spacing = 120;
-            const count = Math.ceil((width * 1.4) / spacing);
-            for (let i = -count; i <= count; i++) {
-                const xBottom = width / 2 + i * spacing;
-                ctx.beginPath();
-                ctx.moveTo(xBottom, bottomY);
-                ctx.lineTo(vanish.x, vanish.y);
-                ctx.stroke();
-            }
+  function getZFactor(z) {
+    const clampedZ = THREE.MathUtils.clamp(z, -GRID_SIZE / 2, GRID_SIZE / 2);
+    return THREE.MathUtils.mapLinear(
+      clampedZ,
+      -GRID_SIZE / 2,
+      GRID_SIZE / 2,
+      FRONT_WIDTH,
+      BACK_WIDTH
+    );
+  }
 
-            // Horizontal lines (animated drift upward)
-            const prefersReduced =
-                window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            const drift = prefersReduced ? 0 : (t / 1000) * 0.18;
-            const lines = 18;
-            for (let i = 0; i < lines; i++) {
-                const progress = ((i + drift) % lines) / lines;
-                const eased = Math.pow(progress, 1.35);
-                const yPos = vanish.y + (bottomY - vanish.y) * eased;
+  function updateStarGeometry(star) {
+    const baseX = star.userData.baseX;
+    const zStart = star.userData.z;
+    const zEnd = zStart + STAR_LENGTH;
+    const positions = star.geometry.attributes.position;
 
-                const leftPoint = {
-                    x: vanish.x + (leftEdge.x - vanish.x) * eased,
-                    y: yPos,
-                };
-                const rightPoint = {
-                    x: vanish.x + (rightEdge.x - vanish.x) * eased,
-                    y: yPos,
-                };
+    positions.setXYZ(0, baseX * getZFactor(zEnd), getCurveY(zEnd), zEnd);
+    positions.setXYZ(1, baseX * getZFactor(zStart), getCurveY(zStart), zStart);
+    positions.needsUpdate = true;
+    star.geometry.computeBoundingSphere();
+  }
 
-                ctx.beginPath();
-                ctx.moveTo(leftPoint.x, leftPoint.y);
-                ctx.lineTo(rightPoint.x, rightPoint.y);
-                ctx.stroke();
-            }
+  // ================================
+  // FLOOR GRID
+  // ================================
+  function createFloorGrid() {
+    const group = new THREE.Group();
 
-            // Subtle ceiling wires
-            ctx.save();
-            ctx.shadowBlur = 0;
-            ctx.strokeStyle = 'rgba(120,120,140,0.18)';
-            const topVanishY = height * 0.12;
-            const topBottomY = height * 0.08;
-            const topLeft = { x: width * -0.15, y: topBottomY };
-            const topRight = { x: width * 1.15, y: topBottomY };
-            const topSpacing = 140;
-            const topCount = Math.ceil((width * 1.3) / topSpacing);
-            for (let i = -topCount; i <= topCount; i++) {
-                const xBottom = width / 2 + i * topSpacing;
-                ctx.beginPath();
-                ctx.moveTo(xBottom, topBottomY);
-                ctx.lineTo(width / 2, topVanishY);
-                ctx.stroke();
-            }
-            ctx.restore();
+    for (let i = 0; i <= DIVISIONS; i++) {
+      const p = -GRID_SIZE / 2 + i * STEP;
 
-            animationFrame = requestAnimationFrame(drawGrid);
-        };
+      const depthFactor = THREE.MathUtils.mapLinear(
+        p, -GRID_SIZE / 2, GRID_SIZE / 2, FRONT_WIDTH, BACK_WIDTH
+      );
 
-        resize();
-        window.addEventListener('resize', resize);
-        animationFrame = requestAnimationFrame(drawGrid);
+      const material = new THREE.LineBasicMaterial({
+        color: BASE_GREY,
+        transparent: true,
+        opacity: 0.20
+      });
 
-        const cleanup = () => {
-            cancelAnimationFrame(animationFrame);
-            window.removeEventListener('resize', resize);
-        };
-        window.addEventListener('beforeunload', cleanup);
+      const hPts = [];
+      for (let x = -GRID_SIZE / 2; x <= GRID_SIZE / 2; x++) {
+        const t = THREE.MathUtils.clamp(1 - Math.abs(p) / FRONT_CURVE_DEPTH, 0, 1);
+        const y = -Math.pow(t, 3.6) * FRONT_CURVE_STRENGTH;
+        hPts.push(x * depthFactor, y, p);
+      }
+
+      const hGeo = new THREE.BufferGeometry();
+      hGeo.setAttribute("position", new THREE.Float32BufferAttribute(hPts, 3));
+      group.add(new THREE.Line(hGeo, material));
+
+      const vPts = [];
+      for (let z = -GRID_SIZE / 2; z <= GRID_SIZE / 2; z++) {
+        const zFactor = THREE.MathUtils.mapLinear(
+          z, -GRID_SIZE / 2, GRID_SIZE / 2, FRONT_WIDTH, BACK_WIDTH
+        );
+        const t = THREE.MathUtils.clamp(1 - Math.abs(z) / FRONT_CURVE_DEPTH, 0, 1);
+        const y = -Math.pow(t, 3.6) * FRONT_CURVE_STRENGTH;
+        vPts.push(p * zFactor, y, z);
+      }
+
+      const vGeo = new THREE.BufferGeometry();
+      vGeo.setAttribute("position", new THREE.Float32BufferAttribute(vPts, 3));
+      group.add(new THREE.Line(vGeo, material));
     }
+
+    group.rotation.x = -Math.PI / 1.07;
+    group.position.y = -18;
+    group.position.z = -8;
+
+    return group;
+  }
+
+  // ================================
+  // CEILING GRID
+  // ================================
+  function createCeilingGrid() {
+    const group = new THREE.Group();
+
+    for (let i = 0; i <= DIVISIONS; i++) {
+      const p = -GRID_SIZE / 2 + i * STEP;
+
+      const depthFactor = THREE.MathUtils.mapLinear(
+        p, -GRID_SIZE / 2, GRID_SIZE / 2, FRONT_WIDTH, BACK_WIDTH
+      );
+
+      const material = new THREE.LineBasicMaterial({
+        color: BASE_GREY.clone(),
+        transparent: true,
+        opacity: 0.15
+      });
+
+      const hPts = [];
+      for (let x = -GRID_SIZE / 2; x <= GRID_SIZE / 2; x++) {
+        const t = THREE.MathUtils.clamp(1 - Math.abs(p) / FRONT_CURVE_DEPTH, 0, 1);
+        const y = Math.pow(t, 3.6) * FRONT_CURVE_STRENGTH;
+        hPts.push(x * depthFactor, y, p);
+      }
+
+      const hGeo = new THREE.BufferGeometry();
+      hGeo.setAttribute("position", new THREE.Float32BufferAttribute(hPts, 3));
+      const hLine = new THREE.Line(hGeo, material.clone());
+      group.add(hLine);
+      ceilingLines.push(hLine);
+
+      const vPts = [];
+      for (let z = -GRID_SIZE / 2; z <= GRID_SIZE / 2; z++) {
+        const zFactor = THREE.MathUtils.mapLinear(
+          z, -GRID_SIZE / 2, GRID_SIZE / 2, FRONT_WIDTH, BACK_WIDTH
+        );
+        const t = THREE.MathUtils.clamp(1 - Math.abs(z) / FRONT_CURVE_DEPTH, 0, 1);
+        const y = Math.pow(t, 3.6) * FRONT_CURVE_STRENGTH;
+        vPts.push(p * zFactor, y, z);
+      }
+
+      const vGeo = new THREE.BufferGeometry();
+      vGeo.setAttribute("position", new THREE.Float32BufferAttribute(vPts, 3));
+      const vLine = new THREE.Line(vGeo, material.clone());
+      group.add(vLine);
+      ceilingLines.push(vLine);
+    }
+
+    group.rotation.x = Math.PI / 1.07;
+    group.position.y = 23;
+    group.position.z = -20;
+
+    return group;
+  }
+
+  const floorGrid = createFloorGrid();
+  scene.add(floorGrid);
+  const ceilingGrid = createCeilingGrid();
+  scene.add(ceilingGrid);
+  floorGrid.updateMatrixWorld(true);
+  ceilingGrid.updateMatrixWorld(true);
+// ================================
+// ✈️ CEILING PLANES (PARALLEL, BACK → FRONT)
+// ================================
+const CEILING_PLANES = [];
+
+const PLANE_COUNT = 2;
+const PLANE_SPEED = 0.10;
+const PLANE_FRONT_Z = 28;
+const PLANE_BACK_Z = -130;
+let ceilingPlaneZ = PLANE_FRONT_Z;
+let ceilingPlaneDirection = -1;
+
+function createCeilingPlanes() {
+  const group = new THREE.Group();
+
+
+  // Tall & narrow (as per image)
+  const geometry = new THREE.PlaneGeometry(
+    0.8,   // width ↓
+    6    // height ↑
+  );
+  geometry.rotateX(Math.PI / 2);
+
+  const material = new THREE.ShaderMaterial({
+    transparent: true,
+    depthWrite: false,
+    blending: THREE.AdditiveBlending,
+    uniforms: {
+      opacity: { value: 0.5 }
+    },
+    vertexShader: `
+      varying vec2 vUv;
+      void main() {
+        vUv = uv;
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+      }
+    `,
+    fragmentShader: `
+      varying vec2 vUv;
+      uniform float opacity;
+
+      void main() {
+        float gradient = smoothstep(1.0, 0.0, vUv.y);
+        gl_FragColor = vec4(vec3(1.0), gradient * opacity);
+      }
+    `
+  });
+
+for (let i = 0; i < PLANE_COUNT; i++) {
+  const plane = new THREE.Mesh(geometry, material);
+
+  plane.position.x = (i === 0 ? -1 : 1) * 2;
+  plane.position.y = 0;
+
+  // START POSITION
+  plane.position.z = PLANE_FRONT_Z;
+
+  // 🔥 REQUIRED INITIAL STATE
+  plane.userData.speed = PLANE_SPEED;
+
+  group.add(plane);
+  CEILING_PLANES.push(plane);
+}
+
+  // SAME ceiling orientation (do not change)
+  group.rotation.x = Math.PI / 1.09;
+  group.position.z = -5;
+
+  return group;
+}
+
+scene.add(createCeilingPlanes());
+
+  // ================================
+  // ⭐ STARS
+  // ⭐ FLOOR STARS (ONE BY ONE)
+  // ================================
+  const STAR_LANES = [3, 6, 9, 12];
+  const stars = [];
+
+  STAR_LANES.forEach(laneIndex => {
+    const baseX = -GRID_SIZE / 2 + laneIndex * STEP;
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute("position", new THREE.BufferAttribute(new Float32Array(6), 3));
+
+    const mat = new THREE.LineBasicMaterial({
+      color: 0xffffff,
+      transparent: true,
+      opacity: 0.95
+    });
+
+    const star = new THREE.Line(geo, mat);
+    star.visible = false;
+    star.userData.baseX = baseX;
+    star.userData.z = STAR_START_Z;
+    star.userData.y = 0;
+    star.userData.speed = 0.09;
+    updateStarGeometry(star);
+
+    floorGrid.add(star);
+    stars.push(star);
+  });
+  // ================================
+  // ANIMATION STATE
+  // ================================
+  let time = 0;
+  let activeStarIndex = 0;
+  const FLOW_SPEED = 0.03;
+  const FLOW_DURATION = Math.PI * 2;
+  const PAUSE_DURATION = 180;
+  let pauseCounter = 0;
+
+  // ================================
+  // ANIMATE
+  // ================================
+  function animate() {
+    requestAnimationFrame(animate);
+
+    if (pauseCounter > 0) {
+      pauseCounter--;
+    } else {
+      time += FLOW_SPEED;
+      if (time >= FLOW_DURATION) {
+        time = 0;
+        pauseCounter = PAUSE_DURATION;
+      }
+    }
+
+    // 🌊 ceiling wave
+    ceilingLines.forEach((line, i) => {
+      const wave = Math.sin(time - i * 0.1);
+      const intensity = THREE.MathUtils.clamp((wave + 1) / 2, 0, 1);
+
+      line.material.color
+        .copy(BASE_GREY)
+        .lerp(PURPLE_GLOW, intensity * 0.85);
+
+      line.material.opacity = 0.18 + intensity * 0.35;
+    });
+
+
+  // ceiling plane motion (front -> back, then back -> front)
+  ceilingPlaneZ += PLANE_SPEED * ceilingPlaneDirection;
+  if (ceilingPlaneDirection < 0 && ceilingPlaneZ <= PLANE_BACK_Z) {
+    ceilingPlaneZ = PLANE_BACK_Z;
+    ceilingPlaneDirection = 1;
+  } else if (ceilingPlaneDirection > 0 && ceilingPlaneZ >= PLANE_FRONT_Z) {
+    ceilingPlaneZ = PLANE_FRONT_Z;
+    ceilingPlaneDirection = -1;
+  }
+
+  CEILING_PLANES.forEach(plane => {
+    plane.position.z = ceilingPlaneZ;
+  });
+
+// ⭐ star motion (GRID-LOCKED)
+    const star = stars[activeStarIndex];
+
+    if (!star.visible) {
+      star.visible = true;
+      star.userData.z = STAR_START_Z;
+      star.material.opacity = 0.95;
+      updateStarGeometry(star);
+    }
+
+    star.userData.z -= star.userData.speed;
+    updateStarGeometry(star);
+
+    // fade toward the back
+    if (star.userData.z < STAR_FADE_START_Z) {
+      const t = THREE.MathUtils.clamp(
+        (STAR_FADE_START_Z - star.userData.z) / STAR_FADE_RANGE,
+        0,
+        1
+      );
+      star.material.opacity = 1 - t;
+    }
+
+    if (star.userData.z < STAR_END_Z) {
+      star.visible = false;
+      activeStarIndex = (activeStarIndex + 1) % stars.length;
+    }
+
+
+    renderer.render(scene, camera);
+  }
+
+  animate();
+
+  // ================================
+  // RESIZE
+  // ================================
+  window.addEventListener("resize", () => {
+    const w = container.clientWidth;
+    const h = container.clientHeight;
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, h);
+  });
+
 });

@@ -9,7 +9,13 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=montserrat:400&family=syne:500" rel="stylesheet" />
 
+
+        <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+<script src="{{ asset('js/app.js') }}"></script>
+
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+
     </head>
     <body class="min-h-screen overflow-x-hidden bg-[#0b0b0e] text-white antialiased">
         <div class="w-full pt-6">
