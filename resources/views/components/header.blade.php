@@ -1,7 +1,7 @@
 <header class="site-header relative z-[1100] flex flex-wrap items-center justify-between gap-4 px-4 md:px-8 lg:px-[30px]">
     <div class="order-1 flex items-center gap-3">
         <a href="{{ route('home') }}" aria-label="Go to home">
-            <img src="http://127.0.0.1:8000/Frame.svg" alt="Sparkle Cloud" class="h-auto w-full max-w-full object-contain sm:max-w-[200px] md:max-w-[161px]">
+            <img src="{{ asset('Frame.svg') }}" alt="Sparkle Cloud" class="h-auto w-full max-w-full object-contain sm:max-w-[200px] md:max-w-[161px]">
         </a>
     </div>
 

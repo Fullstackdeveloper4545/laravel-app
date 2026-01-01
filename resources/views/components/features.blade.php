@@ -20,6 +20,6 @@
 </section>
 <section class="mt-12 px-4 sm:px-6 lg:px-0">
     <div class="relative overflow-hidden rounded-[16px] border border-[#1f2126] bg-[#111216] p-4 pt-[5px] sm:px-6 md:px-10 lg:px-[117px]">
-        <img src="http://127.0.0.1:8000/Container (1).png" alt="Feature container" class="h-auto w-full object-cover">
+        <img src="{{ asset('Container (1).png') }}" alt="Feature container" class="h-auto w-full object-cover">
     </div>
 </section>

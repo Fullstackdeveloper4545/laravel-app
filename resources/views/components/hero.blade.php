@@ -45,7 +45,7 @@
   <!-- DASHBOARD IMAGE -->
   <div class="relative flex justify-center mt-[-240px] z-10">
     <img
-      src="http://127.0.0.1:8000/img.png"
+      src="{{ asset('img.png') }}"
       alt="Sparkle Cloud dashboard"
       class="w-[3020px] max-w-none rounded-[24px]"
     />

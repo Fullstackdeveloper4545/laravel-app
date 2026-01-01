@@ -28,6 +28,6 @@
         </div>
     </div>
      <div class="relative z-100 -mt-[220px] flex justify-center px-4 sm:-mt-[280px] md:-mt-[320px] lg:-mt-[400px] md:px-8">
-        <img src="http://127.0.0.1:8000/img.png" alt="Sparkle Cloud dashboard" class="z-100 w-full max-w-full rounded-[24px] object-cover h-auto xl:max-w-[1920px]">
+        <img src="{{ asset('img.png') }}" alt="Sparkle Cloud dashboard" class="z-100 w-full max-w-full rounded-[24px] object-cover h-auto xl:max-w-[1920px]">
     </div>
 </section>

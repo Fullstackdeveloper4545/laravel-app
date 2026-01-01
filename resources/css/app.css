@@ -1522,7 +1522,7 @@
   height: 45%;
   pointer-events: none;
 
-  background: url("/Users/tusharsaini/Downloads/php-Larvel-complete-feature (2)/php-Larvel-complete-feature-Copy/public/Gradient.png") no-repeat bottom center;
+  background: url("../images/Gradient.png") no-repeat bottom center;
   background-size: 100% 100%;
 
   z-index:2 ;

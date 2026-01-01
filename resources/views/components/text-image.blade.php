@@ -1,6 +1,6 @@
 <section class="relative mt-12 flex justify-center overflow-hidden overflow-x-hidden rounded-[24px] px-4 py-10 sm:px-6 sm:py-12 lg:px-10">
   <img src="{{ asset('Ellipse 202 (1).png') }}" alt="" class="pointer-events-none absolute left-0 top-0 min-h-full w-full h-auto object-cover opacity-80" />
-  <img src="http://127.0.0.1:8000/097b6eabdca32e0125ff5f34430070e56fc8db85 (1).png" alt="" class="pointer-events-none absolute bottom-0 left-0 min-h-full w-full h-auto object-cover opacity-70 transform -translate-y-[200px] sm:-translate-y-[350px] lg:-translate-y-[550px]" />
+  <img src="{{ asset('097b6eabdca32e0125ff5f34430070e56fc8db85 (1).png') }}" alt="" class="pointer-events-none absolute bottom-0 left-0 min-h-full w-full h-auto object-cover opacity-70 transform -translate-y-[200px] sm:-translate-y-[350px] lg:-translate-y-[550px]" />
   <div class="relative z-10 flex w-full max-w-full flex-col items-center justify-center gap-10 lg:max-w-[1200px] lg:flex-row lg:gap-16">
 
     <!-- Text -->
