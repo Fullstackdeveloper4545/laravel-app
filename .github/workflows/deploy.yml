@@ -1,0 +1,88 @@
+name: Deploy to Hostinger VPS
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  SSH_USER: root
+  SSH_HOST: 72.61.174.202
+  APP_DIR: /var/www/laravel-app
+  TARGET_BRANCH: main
+  SSH_PASSWORD: ${{ secrets.VPS_SSH_PASSWORD }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Add VPS to known_hosts
+        run: |
+          mkdir -p "$HOME/.ssh"
+          ssh-keyscan -H "$SSH_HOST" >> "$HOME/.ssh/known_hosts"
+
+      - name: Install sshpass
+        run: sudo apt-get update && sudo apt-get install -y sshpass
+
+      - name: Deploy over SSH
+        env:
+          SSH_USER: ${{ env.SSH_USER }}
+          SSH_HOST: ${{ env.SSH_HOST }}
+          APP_DIR: ${{ env.APP_DIR }}
+          TARGET_BRANCH: ${{ env.TARGET_BRANCH }}
+          SSHPASS: ${{ env.SSH_PASSWORD }}
+        run: |
+          if [ -z "$SSHPASS" ]; then
+            echo "Missing SSHPASS / VPS_SSH_PASSWORD secret"
+            exit 1
+          fi
+          sshpass -e ssh -T \
+            -o StrictHostKeyChecking=yes \
+            -o UserKnownHostsFile=~/.ssh/known_hosts \
+            -o PubkeyAuthentication=no \
+            -o PasswordAuthentication=yes \
+            -o KbdInteractiveAuthentication=yes \
+            -o PreferredAuthentications=password,keyboard-interactive \
+            ${SSH_USER}@${SSH_HOST} <<EOF
+          set -euo pipefail
+          cd ${APP_DIR}
+          if [ ! -d .git ]; then
+            echo "Repository not found at ${APP_DIR}"
+            exit 1
+          fi
+          export DEBIAN_FRONTEND=noninteractive
+          apt-get update
+          apt-get install -y ca-certificates curl git unzip zip software-properties-common
+          apt-get install -y php-cli php-fpm php-mbstring php-xml php-mysql php-zip php-curl php-bcmath
+          # Node.js/npm: if npm is missing, install Node.js 20 from NodeSource (includes npm)
+          if ! command -v npm >/dev/null 2>&1; then
+            curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
+            apt-get install -y nodejs
+          fi
+          if ! command -v composer >/dev/null 2>&1; then
+            EXPECTED_SIGNATURE=$(curl -s https://composer.github.io/installer.sig)
+            php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+            ACTUAL_SIGNATURE=$(php -r "echo hash_file('sha384', 'composer-setup.php');")
+            if [ "$EXPECTED_SIGNATURE" != "$ACTUAL_SIGNATURE" ]; then
+              echo "ERROR: Invalid composer installer signature" >&2
+              rm composer-setup.php
+              exit 1
+            fi
+            php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+            rm composer-setup.php
+          fi
+          git fetch origin ${TARGET_BRANCH}
+          git reset --hard origin/${TARGET_BRANCH}
+          composer install --no-interaction --prefer-dist --no-dev --optimize-autoloader
+          php artisan migrate --force
+          php artisan config:cache
+          php artisan route:cache
+          php artisan view:cache
+          npm ci
+          npm run build
+          sudo systemctl reload php8.2-fpm || true
+          sudo systemctl reload nginx || true
+          EOF
