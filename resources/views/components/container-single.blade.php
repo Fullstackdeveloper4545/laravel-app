@@ -16,19 +16,10 @@
         </p>
         <div class="container-hero__actions flex flex-col items-center justify-center gap-3 sm:flex-row sm:items-center sm:justify-center">
             <button class="container-hero__btn container-hero__btn--primary">Let's Meet</button>
-   <a href="#" class="btn-svg ">
-  sign in 
-  <svg class="border-svg" style="width: 100%; height: 100%;" viewBox="0 0 100 40" preserveAspectRatio="none">
-    <rect
-      class="border-path"
-      x="1"
-      y="1"
-      width="98"
-      height="38"
-      rx="20"
-      ry="20"
-      pathLength="1"
-    />
+   <a href="#" class="btn" style="padding:5px 25px;">
+Sign in 
+  <svg class="svg">
+    <rect class="path"></rect>
   </svg>
 </a>
 
@@ -39,4 +30,6 @@
         <img src="{{ asset('mockup.png') }}" alt="Product mockup" class="h-auto w-full object-contain" />
     </div>
 </section>
+
+
 

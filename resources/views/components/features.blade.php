@@ -17,20 +17,12 @@
                     <div>01</div>
                     <div>Affordable and tailor-made</div>
                 </h1>
-                <p class="relative mb-2 text-[14px]  left-6 mb-1">Sparkle Cloud is built for small businesses and large SMEs. Our solution is ready-to-use and consists of numerous modules, from CMS to Sales. These can be fully customized to your needs if needed.</p>
-                <a href="#" class="btn-svg ">
+                <p class="relative mb-2 text-[14px]  left-6 mb-1" style="margin-bottom:20px;">Sparkle Cloud is built for small businesses and large SMEs. Our solution is ready-to-use and consists of numerous modules, from CMS to Sales. These can be fully customized to your needs if needed.</p>
+
+<a href="#" class="btn mt-4">
  View All Modules
-  <svg class="border-svg" style="width: 100%; height: 100%;" viewBox="0 0 100 40" preserveAspectRatio="none">
-    <rect
-      class="border-path"
-      x="1"
-      y="1"
-      width="98"
-      height="38"
-      rx="20"
-      ry="20"
-      pathLength="1"
-    />
+  <svg class="svg">
+    <rect class="path"></rect>
   </svg>
 </a>
             </div>
@@ -42,20 +34,11 @@
                     <div>02</div>
                     <div>NEW! AI Agents including web widget</div>
                 </h1>
-                <p class="relative mb-2 text-[14px]  left-6 mb-1">Sparkle Cloud's AI Agents automate your processes and reduce your workload for both internal and external use. No technical expertise required.</p>
-                <a href="#" class="btn-svg ">
-More Infor and Free Trail
-  <svg class="border-svg" style="width: 100%; height: 100%;" viewBox="0 0 100 40" preserveAspectRatio="none">
-    <rect
-      class="border-path"
-      x="1"
-      y="1"
-      width="98"
-      height="38"
-      rx="20"
-      ry="20"
-      pathLength="1"
-    />
+                <p class="relative mb-2 text-[14px]  left-6 mb-1" style="margin-bottom:20px;">Sparkle Cloud's AI Agents automate your processes and reduce your workload for both internal and external use. No technical expertise required.</p>
+        <a href="#" class="btn  mt-4">
+ More Infor and Free Trail
+  <svg class="svg">
+    <rect class="path"></rect>
   </svg>
 </a>
             </div>
@@ -67,4 +50,6 @@ More Infor and Free Trail
         <img src="{{ asset('Container (1).png') }}" alt="Feature container" class="h-auto w-full object-cover">
     </div>
 </section>
+
+
 

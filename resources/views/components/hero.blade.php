@@ -29,19 +29,10 @@
         Sparkle Cloud
       </h1>
 
-                     <a href="#" class="btn-svg py-2 mt-4 montserrat ">
-                        OUR MODULES
-  <svg class="border-svg" style="width: 100%; height: 100%;" viewBox="0 0 100 40" preserveAspectRatio="none">
-    <rect
-      class="border-path"
-      x="1"
-      y="1"
-      width="98"
-      height="38"
-      rx="20"
-      ry="20"
-      pathLength="1"
-    />
+  <a href="#" class="btn">
+  Our Modules
+  <svg class="svg">
+    <rect class="path"></rect>
   </svg>
 </a>
     </div
@@ -59,4 +50,6 @@
   {{-- <img src="{{ asset('Gradient.png') }}" alt="" class="hero-floor-gradient pointer-events-none z-10" /> --}}
 
 </section>
+
+
 

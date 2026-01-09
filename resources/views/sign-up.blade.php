@@ -48,7 +48,7 @@
                             <input type="email" name="email" placeholder="Email" class="auth-field auth-text w-full bg-transparent text-[15px] text-white placeholder:text-white/50 focus:outline-none" spellcheck="false" autocapitalize="off" autocorrect="off" autocomplete="off" />
                         </label>
 
-                        <label class="auth-input auth-input--hero flex items-center gap-4 rounded-[12px] px-5 py-[14px]">
+                        <label class="auth-input auth-input--hero flex items-center gap-4 rounded-[12px] px-5 py-[14px]" style="margin-bottom:50px;">
                             <button type="button" id="password-toggle" class="password-toggle" aria-label="Toggle password visibility">
                                 <svg class="h-[22px] w-[22px]" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                                     <path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z" stroke="currentColor" stroke-width="1.5"/>
@@ -58,19 +58,10 @@
                             <input id="password-field" type="password" name="password" placeholder="Password" class="auth-field auth-text w-full bg-transparent text-[15px] text-white placeholder:text-white/45 focus:outline-none" spellcheck="false" autocapitalize="off" autocorrect="off" autocomplete="off" />
                         </label>
 
-                                                <a href="#" class="btn-svg w-full py-2 ">
-Sign Up 
-  <svg class="border-svg" style="width: 100%; height: 100%;" viewBox="0 0 100 40" preserveAspectRatio="none">
-    <rect
-      class="border-path"
-      x="1"
-      y="1"
-      width="98"
-      height="38"
-      rx="20"
-      ry="20"
-      pathLength="1"
-    />
+    <a href="#" class="btn" style="padding:14px 200px;margin-top:20px;">
+  Sign up
+  <svg class="svg">
+    <rect class="path"></rect>
   </svg>
 </a>
       
@@ -100,4 +91,6 @@ Sign Up
         </script>
     </body>
 </html>
+
+
 

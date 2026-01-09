@@ -359,3 +359,45 @@
         renderer.setSize(w, h);
     });
 }
+
+
+function fixButtonBorder() {
+  const btn  = document.querySelector('.btn');
+  const svg  = btn.querySelector('.svg');
+  const rect = btn.querySelector('.path');
+
+  const w = btn.offsetWidth;
+  const h = btn.offsetHeight;
+  const r = h / 2;
+
+  svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+
+  rect.setAttribute('x', 0.5);
+  rect.setAttribute('y', 0.5);
+  rect.setAttribute('width', w - 1);
+  rect.setAttribute('height', h - 1);
+  rect.setAttribute('rx', r);
+  rect.setAttribute('ry', r);
+
+  const length = rect.getTotalLength();
+  const dash   = length * 0.06;
+  const gap    = length - dash;
+
+  rect.style.strokeDasharray  = `${dash} ${gap}`;
+  rect.style.strokeDashoffset = 0;
+
+  rect.animate(
+    [
+      { strokeDashoffset: 0 },
+      { strokeDashoffset: -length }
+    ],
+    {
+      duration: 2500,
+      iterations: Infinity,
+      easing: "linear"
+    }
+  );
+}
+
+fixButtonBorder();
+window.addEventListener('resize', fixButtonBorder);

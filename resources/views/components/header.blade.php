@@ -59,11 +59,11 @@
                     <a href="#" class="px-4 py-1 text-left font-[500] text-[16px] leading-[100%] tracking-[-0.32px] align-middle" style="font-family: 'Montserrat', sans-serif;">AI Automation</a>
                 </div>
             </div>
-            <a href="#" class="px-4 py-2">Prices</a>
+            <a href="{{ route('prices') }}" class="px-4 py-2">Prices</a>
             <a href="#" class="px-4 py-2">Custom</a>
             <a href="#" class="px-4 py-2">Branches</a>
             <a href="#" class="px-4 py-2">Cases</a>
-            <a href="#" class="px-4 py-2">Contact</a>
+            <a href="{{ route('contact') }}" class="px-4 py-2">Contact</a>
         </div>
     </div>
 
@@ -71,22 +71,12 @@
         <button class="h-10 w-full max-w-full rounded-[30px] bg-white px-4  text-[14px] font-semibold text-[#0b0b0e] shadow-[0_12px_20px_rgba(0,0,0,0.35)] sm:w-auto sm:max-w-[160px]">
             Let's Meet
         </button>
-        <a href="{{ route('sign-in') }}" class="btn-svg py-2">
-        Sign in 
-
-        <svg class="border-svg" style="width: 100%; height: 100%;" viewBox="0 0 220 56" preserveAspectRatio="none">
-            <rect
-            class="border-path"
-            x="1"
-            y="1"
-            width="218"
-            height="54"
-            rx="30"
-            ry="30"
-            pathLength="1"
-            />
-        </svg>
-        </a>
+        <a href="{{ route('sign-in') }}" class="btn">
+  Sign in
+  <svg class="svg">
+    <rect class="path"></rect>
+  </svg>
+</a>
     </div>
 </header>
 
@@ -110,4 +100,6 @@
     });
 </script>
 @endpush
+
+
 

@@ -16,21 +16,13 @@
                     <p class="text-center text-[16px] mb-8 font-normal leading-[1.6] tracking-[0] montserrat">
                         <span class="align-middle">ALLE informatie van jou klant overzichtelijk bij elkaar gebracht in de CRM+ module van Sparkle. Waarom + ? Ons CRM komt inclusief hr, sales en project<br />management. Krijg direct inzicht in de geschiedenis van jouw klant zoals openstaande taken, projecten en actuele lead of sales informatie.</span>
                     </p>
-                    <a href="#" class="btn-svg ">
- Bespreek je mogelijkheden! 
-  <svg class="border-svg" style="width: 100%; height: 100%;" viewBox="0 0 100 40" preserveAspectRatio="none">
-    <rect
-      class="border-path"
-      x="1"
-      y="1"
-      width="98"
-      height="38"
-      rx="20"
-      ry="20"
-      pathLength="1"
-    />
+    
+ <a href="#" class="btn">
+  Bespreek je mogelijkheden! 
+  <svg class="svg">
+    <rect class="path"></rect>
   </svg>
-</a>  
+</a>
                 </div>
             </div>
         </div>
@@ -39,4 +31,6 @@
         <img src="{{ asset('img.png') }}" alt="Sparkle Cloud dashboard" class="z-100 w-full max-w-full rounded-[24px] object-cover h-auto xl:max-w-[1920px]">
     </div>
 </section>
+
+
 

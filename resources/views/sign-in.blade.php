@@ -50,7 +50,7 @@
                             <input id="password-field" type="password" name="password" placeholder="Password" class="auth-field auth-text w-full bg-transparent text-[15px] text-white placeholder:text-white/45 focus:outline-none" spellcheck="false" autocapitalize="off" autocorrect="off" autocomplete="off" />
                         </label>
 
-                        <div class="flex items-center justify-between text-[13px] text-white/80">
+                        <div class="flex items-center justify-between text-[13px] text-white/80" style="margin-bottom:23px;">
                             <label class="flex items-center gap-3">
                                 <input type="checkbox" class="auth-checkbox h-[18px] w-[18px] rounded-[4px] border-white/40 bg-transparent text-white focus:ring-0 focus:ring-offset-0" />
                                 <span class="font-medium">Remember me</span>
@@ -58,22 +58,12 @@
                             <a href="#" class="font-medium text-white/80 transition hover:text-white">Forgot Password</a>
                         </div>
 
-                         <a href="#" class="btn-svg w-full py-2 ">
-Sign In 
-  <svg class="border-svg" style="width: 100%; height: 100%;" viewBox="0 0 100 40" preserveAspectRatio="none">
-    <rect
-      class="border-path"
-      x="1"
-      y="1"
-      width="98"
-      height="38"
-      rx="20"
-      ry="20"
-      pathLength="1"
-    />
+              <a href="#" class="btn w-full"  style="padding:14px 200px;">
+ Sign in
+  <svg class="svg">
+    <rect class="path"></rect>
   </svg>
-</a>
-                    </form>
+</a>              </form>
 
                 </div>
                 <p class="mt-6 text-center text-[12px] text-white/70">
@@ -95,4 +85,6 @@ Sign In
         </script>
     </body>
 </html>
+
+
 

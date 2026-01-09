@@ -40,23 +40,15 @@
                             <span class="pricing-card__amount">EUR 39</span>
                             <span class="pricing-card__period">/ per month</span>
                         </div>
-                        <p class="pricing-card__note">billed annually at EUR 409</p>
-                                                                           <a href="#" class="btn-svg w-full py-2 ">
-Start Free Trail 
-  <svg class="border-svg" style="width: 100%; height: 100%;" viewBox="0 0 100 40" preserveAspectRatio="none">
-    <rect
-      class="border-path"
-      x="1"
-      y="1"
-      width="98"
-      height="38"
-      rx="20"
-      ry="20"
-      pathLength="1"
-    />
+                        <p class="pricing-card__note"  style= "margin-bottom:20px;">billed annually at EUR 409</p>
+    <a href="#"
+   class="btn"
+   style="padding:10px 55px; margin-top:20px;">
+  Start Free Trail
+  <svg class="svg">
+    <rect class="path"></rect>
   </svg>
 </a>
-      
        
                         <ul class="pricing-card__list">
                             <li>Up to 100 conversations/month</li>
@@ -74,20 +66,13 @@ Start Free Trail
                             <span class="pricing-card__amount">EUR 169</span>
                             <span class="pricing-card__period">/ per month</span>
                         </div>
-                        <p class="pricing-card__note">billed annually at EUR 1899</p>
-                                                   <a href="#" class="btn-svg w-full py-2 ">
-Start Free Trail 
-  <svg class="border-svg" style="width: 100%; height: 100%;" viewBox="0 0 100 40" preserveAspectRatio="none">
-    <rect
-      class="border-path"
-      x="1"
-      y="1"
-      width="98"
-      height="38"
-      rx="20"
-      ry="20"
-      pathLength="1"
-    />
+                        <p class="pricing-card__note"  style=" margin-bottom:20px;">billed annually at EUR 1899</p>
+        <a href="#"
+   class="btn"
+   style="padding:10px 55px; margin-top:20px;">
+  Start Free Trail
+  <svg class="svg">
+    <rect class="path"></rect>
   </svg>
 </a>
         <ul class="pricing-card__list">
@@ -106,20 +91,13 @@ Start Free Trail
                             <span class="pricing-card__amount">EUR 199</span>
                             <span class="pricing-card__period">/ per month</span>
                         </div>
-                        <p class="pricing-card__note">billed annually at EUR 2199</p>
-                                                   <a href="#" class="btn-svg w-full py-2 ">
-Start Free Trail
-  <svg class="border-svg" style="width: 100%; height: 100%;" viewBox="0 0 100 40" preserveAspectRatio="none">
-    <rect
-      class="border-path"
-      x="1"
-      y="1"
-      width="98"
-      height="38"
-      rx="20"
-      ry="20"
-      pathLength="1"
-    />
+                        <p class="pricing-card__note"  style= "margin-bottom:20px;">billed annually at EUR 2199</p>
+        <a href="#"
+   class="btn"
+   style="padding:10px 55px; margin-top:20px;">
+  Start Free Trail
+  <svg class="svg">
+    <rect class="path"></rect>
   </svg>
 </a>
       
@@ -139,21 +117,13 @@ Start Free Trail
                             <span class="pricing-card__amount">EUR 369</span>
                             <span class="pricing-card__period">/ per month</span>
                         </div>
-                        <p class="pricing-card__note">billed annually at EUR 3999</p>
-                                                                            <a href="#" class="btn-svg  w-full py-2 ">
-Start Free Trail 
-  <svg class="border-svg" style="width: 100%; height: 100%;" viewBox="0 0 100 40" preserveAspectRatio="none">
-    <rect
-      class="border-path"
-      x="1"
-      y="1"
-      width="98"
-      height="38"
-      rx="20"
-      ry="20"
-      pathLength="1"
-      pathLength="1"
-    />
+                        <p class="pricing-card__note"  style=" margin-bottom:20px;">billed annually at EUR 3999</p>
+  <a href="#"
+   class="btn"
+   style="padding:10px 55px;">
+  Start Free Trail
+  <svg class="svg">
+    <rect class="path"></rect>
   </svg>
 </a>
       
@@ -309,4 +279,6 @@ Start Free Trail
         </div>
     </body>
 </html>
+
+
 
