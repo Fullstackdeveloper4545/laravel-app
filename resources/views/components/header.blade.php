@@ -22,11 +22,11 @@
                     <a href="#">AI Automation</a>
                 </div>
             </div>
-            <a href="#">Prices</a>
+            <a href="{{ route('prices') }}">Prices</a>
             <a href="#">Custom</a>
             <a href="#">Branches</a>
             <a href="#">Cases</a>
-            <a href="#">Contact</a> 
+            <a href="{{ route('contact') }}">Contact</a> 
         </div>
     </nav>
 
@@ -71,20 +71,23 @@
         <button class="h-10 w-full max-w-full rounded-[30px] bg-white px-4  text-[14px] font-semibold text-[#0b0b0e] shadow-[0_12px_20px_rgba(0,0,0,0.35)] sm:w-auto sm:max-w-[160px]">
             Let's Meet
         </button>
-       <button class="sign-in-flare" >
-  <span class="inner">Sign In</span>
-</button>
+        <a href="{{ route('sign-in') }}" class="btn-svg py-2">
+        Sign in 
 
-    </div>
-
-    {{-- <div class="order-3 flex w-full flex-wrap items-center justify-center gap-3 md:w-auto md:justify-end">
-        <button class="h-10 w-full max-w-full rounded-[30px] bg-white px-5 py-3 text-xs font-semibold text-[#0b0b0e] shadow-[0_12px_20px_rgba(0,0,0,0.35)] sm:w-auto sm:max-w-[160px]">
-            Let's Meet
-        </button>
-        <a href="{{ route('sign-in') }}" class="sign-in-flare h-[43px] w-full max-w-full rounded-[999px] border border-[#2a2d35] bg-[#111216] px-[23px] py-3 text-xs font-medium text-[#d9dde6] sm:w-auto sm:max-w-[160px] inline-flex items-center justify-center">
-            <span>Sign In</span>
+        <svg class="border-svg" style="width: 100%; height: 100%;" viewBox="0 0 220 56" preserveAspectRatio="none">
+            <rect
+            class="border-path"
+            x="1"
+            y="1"
+            width="218"
+            height="54"
+            rx="30"
+            ry="30"
+            pathLength="1"
+            />
+        </svg>
         </a>
-    </div> --}}
+    </div>
 </header>
 
 @push('scripts')

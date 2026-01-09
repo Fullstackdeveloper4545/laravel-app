@@ -23,7 +23,7 @@
           </button>
 
           <!-- HEADING -->
-          <h3 class="mt-6 text-[28px] font-medium leading-[1.25] [font-family:'Montserrat',sans-serif] sm:text-[36px] md:text-[44px] lg:text-[52px]">
+          <h3 class="mt-6 text-[28px] font-medium leading-[1.25] syne sm:text-[36px] md:text-[44px] lg:text-[52px]">
             Create <span class="text-white/70">freely on</span><br />
             canvas, <span class="text-white/70">including</span><br />
             in pixels, <span class="text-white/70">with a</span><br />
@@ -35,10 +35,10 @@
             <div class="process-step">
               <div class="process-step__marker"><span>01</span></div>
               <div class="process-step__content">
-                <p class="text-[16px] font-medium leading-[1.4] [font-family:'Montserrat',sans-serif] md:text-[20px]">
+                <p class="text-[16px] font-medium leading-[1.4] montserrat md:text-[20px]">
                   Give your design and marketing teams the power
                 </p>
-                <p class="mt-2 text-[13px] leading-[1.6] text-white/70 [font-family:'Montserrat',sans-serif] md:text-[15px]">
+                <p class="mt-2 text-[13px] leading-[1.6] text-white/70 montserrat md:text-[15px]">
                   Create freely on canvas, including in pixels, with a responsive editor that optimizes designs
                   for every screen size.
                 </p>
@@ -48,10 +48,10 @@
             <div class="process-step">
               <div class="process-step__marker"><span>02</span></div>
               <div class="process-step__content">
-                <p class="text-[16px] font-medium leading-[1.4] [font-family:'Montserrat',sans-serif] md:text-[20px]">
+                <p class="text-[16px] font-medium leading-[1.4] montserrat md:text-[20px]">
                   Design with dynamic content
                 </p>
-                <p class="mt-2 text-[13px] leading-[1.6] text-white/70 [font-family:'Montserrat',sans-serif] md:text-[15px]">
+                <p class="mt-2 text-[13px] leading-[1.6] text-white/70 montserrat md:text-[15px]">
                   Create freely on canvas, including in pixels, with a responsive editor that optimizes designs
                   for every screen size.
                 </p>
@@ -61,10 +61,10 @@
             <div class="process-step">
               <div class="process-step__marker"><span>03</span></div>
               <div class="process-step__content">
-                <p class="text-[16px] font-medium leading-[1.4] [font-family:'Montserrat',sans-serif] md:text-[20px]">
+                <p class="text-[16px] font-medium leading-[1.4] montserrat md:text-[20px]">
                   Programmatically deliver content at scale
                 </p>
-                <p class="mt-2 text-[13px] leading-[1.6] text-white/70 [font-family:'Montserrat',sans-serif] md:text-[15px]">
+                <p class="mt-2 text-[13px] leading-[1.6] text-white/70 montserrat md:text-[15px]">
                   Create freely on canvas, including in pixels, with a responsive editor that optimizes designs
                   for every screen size.
                 </p>

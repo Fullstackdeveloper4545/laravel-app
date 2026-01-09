@@ -7,19 +7,30 @@
                 <img src="{{ asset('Ellipse 202 (3).png') }}" alt="" class="pointer-events-none absolute left-1/2 top-[120px] w-full max-w-[1200px] -translate-x-1/2 opacity-90" />
 
                 <div class="hero-content absolute inset-x-0 top-0 z-1 mt-[90px] flex w-full flex-col items-center px-4 text-center sm:mt-[110px] md:mt-[130px] md:px-8">
-                    <p class="text-[16px] font-normal leading-[1.1] text-[#b6bac4] [font-family:'Montserrat',sans-serif] sm:text-[18px] md:text-[22px]">
+                    <p class="text-[16px] font-normal leading-[1.1] text-[#b6bac4] montserrat sm:text-[18px] md:text-[22px]">
                     De krachtigste module
                     </p>
-                    <h1 class="mt-4 text-[48px] font-medium capitalize leading-[1.1] text-white [font-family:'Syne',sans-serif] sm:text-[64px] md:text-[88px] lg:text-[120px]">
+                    <h1 class="mt-4 text-[48px] font-medium capitalize leading-[1.1] text-white syne sm:text-[64px] md:text-[88px] lg:text-[120px]">
                         Sparkle CRM+
                     </h1>
-                    <p class="text-center text-[16px] font-normal leading-[1.6] tracking-[0] [font-family:'Montserrat',sans-serif]">
+                    <p class="text-center text-[16px] mb-8 font-normal leading-[1.6] tracking-[0] montserrat">
                         <span class="align-middle">ALLE informatie van jou klant overzichtelijk bij elkaar gebracht in de CRM+ module van Sparkle. Waarom + ? Ons CRM komt inclusief hr, sales en project<br />management. Krijg direct inzicht in de geschiedenis van jouw klant zoals openstaande taken, projecten en actuele lead of sales informatie.</span>
                     </p>
-                    <button
-                        class="sign-in-flare mt-6">
-                        <span class="inner">Bespreek je mogelijkheden!</span>
-                    </button>   
+                    <a href="#" class="btn-svg ">
+ Bespreek je mogelijkheden! 
+  <svg class="border-svg" style="width: 100%; height: 100%;" viewBox="0 0 100 40" preserveAspectRatio="none">
+    <rect
+      class="border-path"
+      x="1"
+      y="1"
+      width="98"
+      height="38"
+      rx="20"
+      ry="20"
+      pathLength="1"
+    />
+  </svg>
+</a>  
                 </div>
             </div>
         </div>
@@ -28,3 +39,4 @@
         <img src="{{ asset('img.png') }}" alt="Sparkle Cloud dashboard" class="z-100 w-full max-w-full rounded-[24px] object-cover h-auto xl:max-w-[1920px]">
     </div>
 </section>
+

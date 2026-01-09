@@ -79,8 +79,8 @@
                     <button class="crm-cards__pill crm-cards__pill--small mb-1 w-8/12 pill-button">
                         <span>{{ $card['eyebrow'] }}</span>
                     </button>
-                    <h3 class="crm-card__title [font-family:'Syne',sans-serif] mt-1">{{ $card['title'] }}</h3>
-                    <ul class="crm-card__list [font-family:'Montserrat',sans-serif]">
+                    <h3 class="crm-card__title syne mt-1">{{ $card['title'] }}</h3>
+                    <ul class="crm-card__list montserrat">
                         @foreach ($card['lines'] as $line)
                             <li>{{ $line }}</li>
                         @endforeach

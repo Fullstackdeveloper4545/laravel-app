@@ -25,7 +25,7 @@
         <button class="pill-button">
             Testimonials
         </button>
-        <h2 class="text-[28px] leading-[1.2] font-medium text-white [font-family:'Syne',sans-serif] sm:text-[34px] md:text-[42px] lg:text-[56px]">
+        <h2 class="text-[28px] leading-[1.2] font-medium text-white syne sm:text-[34px] md:text-[42px] lg:text-[56px]">
             What Customers Say About Dotstech:<br />
             Real Feedback from the People Who Trust Us to Power
         </h2>
@@ -35,7 +35,7 @@
         <div class="testimonial-marquee__track">
             @foreach (array_merge($testimonials, $testimonials) as $testimonial)
                 <article class="testimonial-card">
-                    <p class="text-[18px] leading-[1.6] text-white/85 [font-family:'Montserrat',sans-serif]">
+                    <p class="text-[18px] leading-[1.6] text-white/85 montserrat">
                         “{{ $testimonial['quote'] }}”
                     </p>
                     <div class="mt-8">
@@ -51,7 +51,7 @@
         <button class="pill-button">
             Template Building
         </button>
-        <h3 class="text-[28px] leading-[1.2] font-medium text-white [font-family:'Syne',sans-serif] sm:text-[34px] md:text-[42px] lg:text-[52px]">
+        <h3 class="text-[28px] leading-[1.2] font-medium text-white syne sm:text-[34px] md:text-[42px] lg:text-[52px]">
             Over 3M Sites <span class="text-white/70">Running</span>
         </h3>
     </div>

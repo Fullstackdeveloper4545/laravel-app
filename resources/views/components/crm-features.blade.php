@@ -5,11 +5,11 @@
                 <button class="pill-button">
                     Verhoog Je Sales Met 25%
                 </button>
-                <h2 class="mt-5 text-[28px] font-medium leading-[1.2] text-white [font-family:'Syne',sans-serif] sm:text-[36px] md:text-[44px] lg:text-[52px]">
+                <h2 class="mt-5 text-[28px] font-medium leading-[1.2] text-white syne sm:text-[36px] md:text-[44px] lg:text-[52px]">
                     Sparkle is made Simple<br />and Powerful
                 </h2>
             </div>
-            <p class="max-w-lg text-[14px] leading-[1.6] text-white [font-family:'Montserrat',sans-serif] sm:text-[15px]">
+            <p class="max-w-lg text-[14px] leading-[1.6] text-white montserrat sm:text-[15px]">
                <br /> <br /> <br /> <br />  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
                 been the industry's standard dummy text ever since the 1900s,
             </p>
@@ -39,10 +39,10 @@
                 <button class="pill-button">
                     Verhoog Je Sales Met 25%
                 </button>
-                <h3 class="mt-4 text-[22px] font-medium text-white [font-family:'Syne',sans-serif] sm:text-[26px]">
+                <h3 class="mt-4 text-[22px] font-medium text-white syne sm:text-[26px]">
                     Krachtig en effectief
                 </h3>
-                <ul class="mt-6 space-y-2 text-[13px] leading-[1.6] text-white/80 [font-family:'Montserrat',sans-serif]">
+                <ul class="mt-6 space-y-2 text-[13px] leading-[1.6] text-white/80 montserrat">
                     <li>- Een helder overzicht van al je klanten</li>
                     <li>- Volg snel al je verkoopkansen op</li>
                     <li>- Inzicht van alle notities van collega's</li>
@@ -63,10 +63,10 @@
                 <button class="pill-button">
                   Accelereer Met Onze Modules!
                 </button>
-                <h3 class="mt-4 text-[26px] font-medium text-white [font-family:'Syne',sans-serif] sm:text-[30px]">
+                <h3 class="mt-4 text-[26px] font-medium text-white syne sm:text-[30px]">
                     CRM <span class="text-white/70">het hart van</span><br />Sparkle
                 </h3>
-                <div class="mt-6 space-y-4 text-[13px] leading-[1.7] text-white/80 [font-family:'Montserrat',sans-serif]">
+                <div class="mt-6 space-y-4 text-[13px] leading-[1.7] text-white/80 montserrat">
                     <p>
                         Alle noodzakelijke tools zijn aanwezig en geintegreerd zoals sales, leads en project management. Je
                         ziet direct op klant niveau alle informatie. Vanuit het CRM sturen wij je direct door naar de juiste
@@ -89,10 +89,10 @@
                 <button class="pill-button">
                     Het Hart Van Je Funnel!
                 </button>
-                <h3 class="mt-4 text-[22px] font-medium text-white [font-family:'Syne',sans-serif] sm:text-[26px]">
+                <h3 class="mt-4 text-[22px] font-medium text-white syne sm:text-[26px]">
                     Sales <span class="text-white/70">management</span>
                 </h3>
-                <ul class="mt-6 space-y-2 text-[13px] leading-[1.6] text-white/80 [font-family:'Montserrat',sans-serif]">
+                <ul class="mt-6 space-y-2 text-[13px] leading-[1.6] text-white/80 montserrat">
                     <li>- Alle lopende leads staan duidelijk in één overzicht</li>
                     <li>- Inzicht en tracking met dashboarding</li>
                     <li>- Leadgegevens, contactpersonen en documenten bij elkaar in de drive</li>
@@ -113,10 +113,10 @@
                 <button class="pill-button">
                    Verhoog Je Efficiëntie
                 </button>
-                <h3 class="mt-4 text-[22px] font-medium text-white [font-family:'Syne',sans-serif] sm:text-[26px]">
+                <h3 class="mt-4 text-[22px] font-medium text-white syne sm:text-[26px]">
                     Project <span class="text-white/70">management</span>
                 </h3>
-                <ul class="mt-6 space-y-2 text-[13px] leading-[1.6] text-white/80 [font-family:'Montserrat',sans-serif]">
+                <ul class="mt-6 space-y-2 text-[13px] leading-[1.6] text-white/80 montserrat">
                     <li>- Urenregistratie voor dummy’s</li>
                     <li>- Alle lopende projecten staan duidelijk in één overzicht</li>
                     <li>- Projectgegevens en documenten bij elkaar in de drive</li>
@@ -137,10 +137,10 @@
                 <button class="pill-button">
                   Verhoog Je Efficiëntie
                 </button>
-                <h3 class="mt-4 text-[22px] font-medium text-white [font-family:'Syne',sans-serif] sm:text-[26px]">
+                <h3 class="mt-4 text-[22px] font-medium text-white syne sm:text-[26px]">
                     HR <span class="text-white/70">management</span>
                 </h3>
-                <ul class="mt-6 space-y-2 text-[13px] leading-[1.6] text-white/80 [font-family:'Montserrat',sans-serif]">
+                <ul class="mt-6 space-y-2 text-[13px] leading-[1.6] text-white/80 montserrat">
                     <li>- Alle lopende sollicitaties staan duidelijk in één overzicht</li>
                     <li>- Contactpersonen en documenten bij elkaar in de drive</li>
                     <li>- Filteren op bron, categorie, status of actie mogelijk</li>

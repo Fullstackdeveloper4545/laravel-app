@@ -21,18 +21,29 @@
 
     <!-- 🌟 TEXT CONTENT -->
     <div class="relative z-40 flex flex-col items-center text-center py-4">
-      <p class="text-[22px] font-normal leading-[1.1] text-[#b6bac4] font-montserrat">
+      <p class="text-[22px] font-normal leading-[1.1] text-[#b6bac4] montserrat">
         All you need is...
       </p>
 
-      <h1 class="mt-4 text-[110px] font-medium capitalize leading-[1.1] text-white font-syne">
+      <h1 class="mt-4 text-[110px] font-medium capitalize leading-[1.1] text-white syne">
         Sparkle Cloud
       </h1>
 
-      <button
-        class="sign-in-flare">
-        <span class="inner" >Our Modules</span>
-      </button>
+                     <a href="#" class="btn-svg py-2 mt-4 montserrat ">
+                        OUR MODULES
+  <svg class="border-svg" style="width: 100%; height: 100%;" viewBox="0 0 100 40" preserveAspectRatio="none">
+    <rect
+      class="border-path"
+      x="1"
+      y="1"
+      width="98"
+      height="38"
+      rx="20"
+      ry="20"
+      pathLength="1"
+    />
+  </svg>
+</a>
     </div
     >
   </div>
@@ -48,3 +59,4 @@
   {{-- <img src="{{ asset('Gradient.png') }}" alt="" class="hero-floor-gradient pointer-events-none z-10" /> --}}
 
 </section>
+

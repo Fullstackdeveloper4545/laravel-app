@@ -5,10 +5,10 @@
         <button class="pill-button"> 
            <span class=  >Testimonials</span>
         </button>
-        <h2 class="text-[28px] leading-[1.2] font-medium text-white [font-family:'Syne',sans-serif] sm:text-[34px] md:text-[42px] lg:text-[52px]">
+        <h2 class="text-[28px] leading-[1.2] font-medium text-white syne sm:text-[34px] md:text-[42px] lg:text-[52px]">
             Hear What our customer are saying<br />about Sparkle
         </h2>
-        <p class="max-w-2xl text-[12px] leading-[1.6] text-white/70 [font-family:'Montserrat',sans-serif] sm:text-[13px]">
+        <p class="max-w-2xl text-[12px] leading-[1.6] text-white/70 montserrat sm:text-[13px]">
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
             industry's standard dummy text ever since the 1500s,
         </p>
@@ -31,7 +31,7 @@
                     <div class="testimonial-stack" aria-hidden="{{ $loopIndex === 2 ? 'true' : 'false' }}">
                         @foreach (array_merge($testimonialsLeft, $testimonialsLeft) as $testimonial)
                             <article class="p-5 card text-white shadow-[0_5px_10px_rgba(0,0,0,0.35)]">
-                                <p class="text-[12px] leading-[1.6] [font-family:'Montserrat',sans-serif]">
+                                <p class="text-[12px] leading-[1.6] montserrat">
                                     {{ $testimonial['quote'] }}
                                 </p>
                                 <div class="mt-4 flex items-center gap-3">
@@ -50,7 +50,7 @@
         {{-- center --}}
         <div class="relative flex flex-col items-center justify-between gap-[10px] md:h-[550px]">
             <img src="{{ asset('2148452672 1.png') }}" alt="Customer portrait" class="h-full w-full object-contain" />
-            <div class="absolute bottom-[40px] left-[110px] right-[30px] rounded-[12px] w-7/12 bg-white/10 px-4 py-3 text-center text-[11px] text-white/70 [font-family:'Montserrat',sans-serif]">
+            <div class="absolute bottom-[40px] left-[110px] right-[30px] rounded-[12px] w-7/12 bg-white/10 px-4 py-3 text-center text-[11px] text-white/70 montserrat">
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
                 industry's standard dummy text ever since the 1500s,
             </div>
@@ -62,7 +62,7 @@
                     <div class="testimonial-stack" aria-hidden="{{ $loopIndex === 2 ? 'true' : 'false' }}">
                         @foreach (array_merge($testimonialsRight, $testimonialsRight) as $testimonial)
                             <article class="card p-5 text-white/90 shadow-[0_16px_30px_rgba(0,0,0,0.35)]">
-                                <p class="text-[12px] leading-[1.6] [font-family:'Montserrat',sans-serif]">
+                                <p class="text-[12px] leading-[1.6] montserrat">
                                     {{ $testimonial['quote'] }}
                                 </p>
                                 <div class="mt-4 flex items-center gap-3">

@@ -6,8 +6,9 @@
 
         <title>Sparkle Cloud | Prices</title>
 
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=montserrat:400,600&family=syne:500" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Syne:wght@400..800&display=swap" rel="stylesheet">
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
@@ -40,7 +41,23 @@
                             <span class="pricing-card__period">/ per month</span>
                         </div>
                         <p class="pricing-card__note">billed annually at EUR 409</p>
-                        <button class="pricing-card__cta sign-in-flare"><span class="inner w-full">Start free trial</span></button>
+                                                                           <a href="#" class="btn-svg w-full py-2 ">
+Start Free Trail 
+  <svg class="border-svg" style="width: 100%; height: 100%;" viewBox="0 0 100 40" preserveAspectRatio="none">
+    <rect
+      class="border-path"
+      x="1"
+      y="1"
+      width="98"
+      height="38"
+      rx="20"
+      ry="20"
+      pathLength="1"
+    />
+  </svg>
+</a>
+      
+       
                         <ul class="pricing-card__list">
                             <li>Up to 100 conversations/month</li>
                             <li>Basic members</li>
@@ -58,8 +75,22 @@
                             <span class="pricing-card__period">/ per month</span>
                         </div>
                         <p class="pricing-card__note">billed annually at EUR 1899</p>
-                          <button class="pricing-card__cta sign-in-flare"><span class="inner w-full">Start free trial</span></button>
-                        <ul class="pricing-card__list">
+                                                   <a href="#" class="btn-svg w-full py-2 ">
+Start Free Trail 
+  <svg class="border-svg" style="width: 100%; height: 100%;" viewBox="0 0 100 40" preserveAspectRatio="none">
+    <rect
+      class="border-path"
+      x="1"
+      y="1"
+      width="98"
+      height="38"
+      rx="20"
+      ry="20"
+      pathLength="1"
+    />
+  </svg>
+</a>
+        <ul class="pricing-card__list">
                             <li>Up to 1000 conversations/month</li>
                             <li>Team members</li>
                             <li>Basic analytics</li>
@@ -76,7 +107,22 @@
                             <span class="pricing-card__period">/ per month</span>
                         </div>
                         <p class="pricing-card__note">billed annually at EUR 2199</p>
-                          <button class="pricing-card__cta sign-in-flare"><span class="inner w-full">Start free trial</span></button>
+                                                   <a href="#" class="btn-svg w-full py-2 ">
+Start Free Trail
+  <svg class="border-svg" style="width: 100%; height: 100%;" viewBox="0 0 100 40" preserveAspectRatio="none">
+    <rect
+      class="border-path"
+      x="1"
+      y="1"
+      width="98"
+      height="38"
+      rx="20"
+      ry="20"
+      pathLength="1"
+    />
+  </svg>
+</a>
+      
                         <ul class="pricing-card__list">
                             <li>Up to 2000 conversations/month</li>
                             <li>Team members</li>
@@ -94,7 +140,24 @@
                             <span class="pricing-card__period">/ per month</span>
                         </div>
                         <p class="pricing-card__note">billed annually at EUR 3999</p>
-                         <button class="pricing-card__cta sign-in-flare"><span class="inner w-full">Start free trial</span></button>
+                                                                            <a href="#" class="btn-svg  w-full py-2 ">
+Start Free Trail 
+  <svg class="border-svg" style="width: 100%; height: 100%;" viewBox="0 0 100 40" preserveAspectRatio="none">
+    <rect
+      class="border-path"
+      x="1"
+      y="1"
+      width="98"
+      height="38"
+      rx="20"
+      ry="20"
+      pathLength="1"
+      pathLength="1"
+    />
+  </svg>
+</a>
+      
+       
                         <ul class="pricing-card__list">
                             <li>Up to 10k conversations/month</li>
                             <li>Team members</li>
@@ -221,11 +284,11 @@
                         <span class="compare-highlight">?</span>
                     </div>
                     <div class="compare-row compare-row--cta">
-                        <span><button>Schedule a call</button></span>
-                        <span><button>Schedule a call</button></span>
-                        <span><button>Schedule a call</button></span>
-                        <span><button>Schedule a call</button></span>
-                        <span class="compare-highlight"><button>Schedule a call</button></span>
+                        <span><button class="pill-button">Schedule a call</button></span>
+                        <span><button  class="pill-button" >Schedule a call</button></span>
+                        <span><button  class="pill-button" >Schedule a call</button></span>
+                        <span><button  class="pill-button">Schedule a call</button></span>
+                        <span class="compare-highlight"><button class="pill-button ">Schedule a call</button></span>
                     </div>
                 </div>
             </section>
@@ -233,8 +296,8 @@
             <section class="pricing-help">
                 <h3>Need help with plan selection?</h3>
                 <div class="pricing-help__cta">
-                    <button class="pricing-help__btn">Our Quick Guide will help you choose the Right Plan For your needs</button>
-                    <button class="pricing-help__btn pricing-help__btn--primary">Help Me Choose The Right Plan</button>
+                    <button class="pill-btn pricing-help__btn  ">Our Quick Guide will help you choose the Right Plan For your needs</button>
+                    <button class="pricing-help__btn pricing-help__btn--primary pill-btn">Help Me Choose The Right Plan</button>
                 </div>
             </section>
 
@@ -246,3 +309,4 @@
         </div>
     </body>
 </html>
+

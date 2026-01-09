@@ -6,8 +6,9 @@
 
         <title>Sparkle Cloud | Sign In</title>
 
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=montserrat:400&family=syne:500" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Syne:wght@400..800&display=swap" rel="stylesheet">
 
         <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
 
@@ -57,9 +58,21 @@
                             <a href="#" class="font-medium text-white/80 transition hover:text-white">Forgot Password</a>
                         </div>
 
-                        <button type="submit" class="sign-in-flare w-full ">
-                            <span class="inner w-full">Sign In</span>
-                        </button>
+                         <a href="#" class="btn-svg w-full py-2 ">
+Sign In 
+  <svg class="border-svg" style="width: 100%; height: 100%;" viewBox="0 0 100 40" preserveAspectRatio="none">
+    <rect
+      class="border-path"
+      x="1"
+      y="1"
+      width="98"
+      height="38"
+      rx="20"
+      ry="20"
+      pathLength="1"
+    />
+  </svg>
+</a>
                     </form>
 
                 </div>
@@ -82,3 +95,4 @@
         </script>
     </body>
 </html>
+

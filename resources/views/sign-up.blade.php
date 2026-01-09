@@ -6,8 +6,9 @@
 
         <title>Sparkle Cloud | Sign Up</title>
 
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=montserrat:400&family=syne:500" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Syne:wght@400..800&display=swap" rel="stylesheet">
 
         <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
 
@@ -57,9 +58,22 @@
                             <input id="password-field" type="password" name="password" placeholder="Password" class="auth-field auth-text w-full bg-transparent text-[15px] text-white placeholder:text-white/45 focus:outline-none" spellcheck="false" autocapitalize="off" autocorrect="off" autocomplete="off" />
                         </label>
 
-                        <button type="submit" class="sign-in-flare w-full ">
-                            <span class="inner w-full">Sign Up</span>
-                        </button>
+                                                <a href="#" class="btn-svg w-full py-2 ">
+Sign Up 
+  <svg class="border-svg" style="width: 100%; height: 100%;" viewBox="0 0 100 40" preserveAspectRatio="none">
+    <rect
+      class="border-path"
+      x="1"
+      y="1"
+      width="98"
+      height="38"
+      rx="20"
+      ry="20"
+      pathLength="1"
+    />
+  </svg>
+</a>
+      
                     </form>
 
                     <p class="mt-5 text-[11px] text-white/60">
@@ -86,3 +100,4 @@
         </script>
     </body>
 </html>
+
